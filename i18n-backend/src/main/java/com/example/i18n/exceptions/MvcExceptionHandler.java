@@ -12,12 +12,8 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RequiredArgsConstructor
 public class MvcExceptionHandler {
 
-    private final MessageSource messageSource;
-
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorDetailsDto> exception(Exception e) {
-        String message = messageSource.getMessage(e.getMessage(),null, LocaleConfig.GLOBAL_LOCALE);
-        ErrorDetailsDto errorDetails =  ErrorDetailsDto.builder().message(message).build();
-        return ResponseEntity.badRequest().body(errorDetails);
+        return ResponseEntity.badRequest().body(ErrorDetailsDto.builder().message(e.getMessage()).build());
     }
 }
