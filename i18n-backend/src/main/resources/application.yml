@@ -1,0 +1,4 @@
+app:
+  locale:
+    default: en
+    baseNameForResourceBundles: i18n/messages
